@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +17,67 @@ public class Main {
         double greatest = 0;
         double average = 0;
         double smallest = 0;
-        //todo дописать логику программы ниже.
+
+        //Вывод наибольшего, среднего из трех и наименьшего веса при условии, что все три веса априорно имеют разные значения
+
+        if (first>second && first>third)
+        {
+            greatest = first;
+            if (second>third) {
+                average = second;
+                smallest = third;
+            }
+            else {
+                average = third;
+                smallest = second;
+            }
+
+        }
+
+        else if (second>first && second>third)
+        {
+            greatest = second;
+            if (first>third) {
+                average = first;
+                smallest = third;
+            }
+            else {
+                average = third;
+                smallest = second;
+            }
+        }
+
+        else
+        {
+            greatest = third;
+            if (first > second) {
+                average = first;
+                smallest = second;
+            }
+            else {
+                average = second;
+                smallest = first;
+            }
+        }
+
+        System.out.println("Наибольший вес: " + greatest);
+        System.out.println("Средний вес: " + average);
+        System.out.println("Наименьший вес: " + smallest);
+
+        //An easier way to solve this problem
+
+        double[] numbers = new double[] {first, second, third};
+        Arrays.sort(numbers);
+
+        System.out.println("\nНаибольший вес: " + numbers[2]);
+        System.out.println("Средний вес: " + numbers[1]);
+        System.out.println("Наименьший вес: " + numbers[0]);
+
+        //Решение той же задачи с помощью тернарных выражений
+        greatest = first>second && first>third ? first : second>third ? second : third;
+        smallest = first<second && first<third ? first : second<third ? second : third;
+        average = (first>second && first<third) || (first<second && first>third) ? first :
+                (second>first && second<third) || (second<first && second>third) ? second : third;
 
 
 
@@ -24,11 +85,5 @@ public class Main {
 
 
 
-        //todo
-
-
-        System.out.println("Наибольший вес: " + 10);
-        System.out.println("Средний вес: " + 9);
-        System.out.println("Наименьший вес: " + 1);
     }
 }
